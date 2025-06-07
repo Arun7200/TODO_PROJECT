@@ -1,0 +1,124 @@
+html {
+    background-color: #E4E9FD;
+    background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+    min-height: 1000px;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+    color: #000;
+    padding: 20px;
+    text-align: center;
+}
+
+.box {
+    max-width: 500px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.item {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 10px 0;
+}
+
+.item:last-child {
+    border-bottom: 0;
+}
+
+input:checked + p {
+    text-decoration: line-through;
+    text-decoration-color: #A683E3;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+input[type="text"] {
+    text-align: center;
+    height: 40px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 200;
+    width: 200px;
+    border-bottom: 2px solid #ccc;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-bottom-color: #A683E3;
+}
+
+select {
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+button {
+    background-color: #A683E3;
+    min-height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    border: none;
+    color: black;
+    font-size: 20px;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #8d5de0;
+}
+
+footer {
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .box {
+        width: 90%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    input[type="text"], select {
+        width: 100%;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    button {
+        width: 100%;
+        border-radius: 5px;
+    }
+}

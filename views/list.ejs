@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Todo List</h1>
+    </header>
+
+    <div class="box">
+        <!-- Filter Form -->
+        <form method="get" action="/" style="text-align: center; padding: 10px;">
+            <label for="filter">Filter by Priority:</label>
+            <select id="filter" name="filter" onchange="this.form.submit()">
+                <option value="" <%= selectedFilter === "" ? "selected" : "" %>>All</option>
+                <option value="High" <%= selectedFilter === "High" ? "selected" : "" %>>High</option>
+                <option value="Medium" <%= selectedFilter === "Medium" ? "selected" : "" %>>Medium</option>
+                <option value="Low" <%= selectedFilter === "Low" ? "selected" : "" %>>Low</option>
+            </select>
+        </form>
+
+        <!-- Task List -->
+        <% for (let i = 0; i < ejes.length; i++) { %>
+            <div class="item">
+                <form action="/edit/<%= i %>" method="post" class="edit-form">
+                    <input type="checkbox">
+                    <input type="text" name="updatedTask" value="<%= ejes[i].task %>" />
+                    <select name="priority">
+                        <option value="Low" <%= ejes[i].priority === "Low" ? "selected" : "" %>>Low</option>
+                        <option value="Medium" <%= ejes[i].priority === "Medium" ? "selected" : "" %>>Medium</option>
+                        <option value="High" <%= ejes[i].priority === "High" ? "selected" : "" %>>High</option>
+                    </select>
+                    <button type="submit">Edit</button>
+                </form>
+                <form action="/delete/<%= i %>" method="post" style="margin-left: 10px;">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        <% } %>
+
+        <!-- Add New Task -->
+        <form action="/" method="post" onsubmit="return validateForm()" class="add-form">
+            <input type="text" name="ele1" id="ele1" placeholder="Enter the task" required>
+            <select name="priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <button type="submit">+</button>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            const input = document.getElementById('ele1').value.trim();
+            if (input === '') {
+                alert("Task cannot be empty.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
